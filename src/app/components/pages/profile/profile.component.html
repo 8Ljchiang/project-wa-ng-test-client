@@ -2,5 +2,14 @@
   profile works!
 </p>
 <p>
-  Authentication token: {{ userToken }}
+  Username: {{ username$ | async }}
+</p>
+<p>
+  Authentication token: {{ authToken$ | async }}
+</p>
+<p>
+  Account roles: {{ roles$ | async }}
+</p>
+<p>
+  Account status: {{ accountStatus$ | async }}
 </p>

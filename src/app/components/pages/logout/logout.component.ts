@@ -1,3 +1,4 @@
+import { AuthenticationFeatureService } from './../../../services/authentication-feature.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class LogoutComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
+    // private authService: AuthService,
+    private authenticationFeatureService: AuthenticationFeatureService,
     private router: Router
   ) { }
 
@@ -18,7 +20,8 @@ export class LogoutComponent implements OnInit {
   }
 
   onLogoutAction() {
-    this.authService.logout();
+    // this.authService.logout();
+    this.authenticationFeatureService.logout();
     this.router.navigate(['/']);
   }
 }

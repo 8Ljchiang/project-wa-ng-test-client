@@ -1,3 +1,6 @@
+import { AuthenticationFeatureService } from './../../services/authentication-feature.service';
+import { FormsModule } from '@angular/forms';
+import { AddTodoComponent } from './../../components/shared/add-todo/add-todo.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from 'src/app/components/pages/profile/profile.component';
@@ -6,9 +9,11 @@ import { SettingsComponent } from 'src/app/components/pages/settings/settings.co
 import { AuthRequiredRoutingModule } from './auth-required-routing.module';
 import { AuthRequiredComponent } from './auth-required.component';
 import { LogoutComponent } from 'src/app/components/pages/logout/logout.component';
-import { AuthGuard } from 'src/app/guards/auth.guard';
 import { TodoListComponent } from 'src/app/components/shared/todo-list/todo-list.component';
 import { TodoListItemComponent } from 'src/app/components/shared/todo-list-item/todo-list-item.component';
+import { NgxsModule } from '@ngxs/store';
+import { TaskState } from 'src/app/ngxs/task.state';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 
 @NgModule({
   declarations: [
@@ -18,13 +23,17 @@ import { TodoListItemComponent } from 'src/app/components/shared/todo-list-item/
     SettingsComponent,
     LogoutComponent,
     TodoListComponent,
-    TodoListItemComponent
-    // AuthGuard
+    TodoListItemComponent,
+    AddTodoComponent,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AuthRequiredRoutingModule,
-    // AuthGuard
+    // NgxsModule.forFeature([TaskState]),
+  ],
+  providers: [
+    AuthenticationFeatureService,
   ]
 })
 export class AuthRequiredModule { }

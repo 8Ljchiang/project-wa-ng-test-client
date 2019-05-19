@@ -1,7 +1,8 @@
 <div class="menu-container">
   <!-- <div *ngIf="isAuthenticated()"> -->
   <p>
-    Authorization token: {{ userToken }}
+    <!-- Authorization token: {{ userToken }} -->
+    Authorization Token: {{ authToken$ | async }}
   </p>
 
   <div *ngIf="isLoggedIn">
@@ -24,6 +25,6 @@
       <div class="menu-item"><a routerLink="/index/signup">Signup</a></div>
     </ul>
   </div>
-  
- 
+
+
 </div>

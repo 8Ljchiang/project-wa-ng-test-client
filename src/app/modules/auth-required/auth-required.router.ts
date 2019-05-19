@@ -5,38 +5,47 @@ import { TasksComponent } from 'src/app/components/pages/tasks/tasks.component';
 import { SettingsComponent } from 'src/app/components/pages/settings/settings.component';
 import { LogoutComponent } from 'src/app/components/pages/logout/logout.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { AuthenticationFeatureService } from 'src/app/services/authentication-feature.service';
 
 export const authRequiredRoutes: Route[] = [
 	{
 		path: '',
 		component: AuthRequiredComponent,
-		canActivateChild: [AuthGuard],
+    canActivateChild: [AuthGuard],
 		children: [
-			{ 
-				path: '',
-				component: ProfileComponent,
-				canActivate: [AuthGuard]
-			},
-			{ 
+			// {
+			// 	path: '',
+			// 	component: ProfileComponent,
+      //   canActivate: [AuthGuard],
+      //   pathMatch: 'full',
+			// },
+			{
 				path: 'profile',
 				component: ProfileComponent,
-				canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        pathMatch: 'full',
+        // resolve: {
+        //   username: AuthenticationFeatureService
+        // }
 			},
 			// { path: 'tasks/:id', component: TaskItemComponent },
-			{ 
+			{
 				path: 'tasks',
 				component: TasksComponent,
-				canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        pathMatch: 'full',
 			},
-			{ 
+			{
 				path: 'settings',
 				component: SettingsComponent,
-				canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        pathMatch: 'full',
 			},
-			{ 
+			{
 				path: 'logout',
 				component: LogoutComponent,
-				canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        pathMatch: 'full',
 			},
 		]
 	},

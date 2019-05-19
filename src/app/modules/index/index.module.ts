@@ -1,3 +1,8 @@
+import { AuthenticationFeatureService } from './../../services/authentication-feature.service';
+import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
+import { NgxsModule } from '@ngxs/store';
+import { AuthState } from './../../ngxs/auth.state';
+import { AccountState } from './../../ngxs/account.state';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IndexRoutingModule } from './index-routing.module';
@@ -15,10 +20,14 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     IndexRoutingModule,
-    FormsModule
+    FormsModule,
+    // NgxsModule.forFeature([AccountState, AuthState]),
   ],
   exports: [
     IndexRoutingModule,
+  ],
+  providers: [
+    AuthenticationFeatureService,
   ]
 })
 export class IndexModule { }

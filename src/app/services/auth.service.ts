@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { getQueryValue } from '@angular/core/src/view/query';
-
-const storageKey = 'isAuthenticated';
-const fakeAuthToken = 'abc123';
+import { fakeAuthToken, localStorageAuthTokenKey } from '../config/seedData';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +21,15 @@ export class AuthService {
     };
 
     this.tokenSource.next(response.data.jwt);
-    localStorage.setItem(storageKey, JSON.stringify(response.data));
+    localStorage.setItem(localStorageAuthTokenKey, JSON.stringify(response.data));
   }
 
   logout() {
     this.tokenSource.next('');
-    localStorage.removeItem(storageKey);
+    localStorage.removeItem(localStorageAuthTokenKey);
   }
 
-  getUserTokenAsObservable() {
+  getAuthTokenAsObservable() {
     return this.userToken;
     // const authStorage = JSON.parse(localStorage.getItem(this.storageKey));
     // if (authStorage) {

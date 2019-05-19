@@ -1,3 +1,4 @@
+import { AuthenticationFeatureService } from './../services/authentication-feature.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,11 +14,15 @@ export class AuthGuard implements CanActivate {
   //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // return true;
   // }
+  isAuthenticated = false;
 
   constructor(
-    private authService: AuthService,
+    // private authService: AuthService,
+    private authenticationFeatureService: AuthenticationFeatureService,
     private router: Router
-  ) {}
+  ) {
+    this.checkAuth();
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -33,7 +38,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivateChild() {
-    const isAuthorized = this.checkAuth();
+    const isAuthorized = this.isAuthenticated;
     if (isAuthorized) {
       return true;
     } else {
@@ -42,7 +47,15 @@ export class AuthGuard implements CanActivate {
     }
   }
 
-  checkAuth(): boolean {
-    return this.authService.isLoggedIn();
+  checkAuth() {
+    return this.authenticationFeatureService.authState$.subscribe(
+      (state) => {
+        if (state.authToken && state.authToken.length > 0) {
+          this.isAuthenticated = true;
+        } else {
+          this.isAuthenticated = false;
+        }
+      }
+    );
   }
 }

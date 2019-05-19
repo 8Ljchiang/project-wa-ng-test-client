@@ -296,6 +296,13 @@
     tree-kill "1.2.1"
     webpack-sources "1.3.0"
 
+"@ngxs-labs/dispatch-decorator@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@ngxs-labs/dispatch-decorator/-/dispatch-decorator-1.1.0.tgz#31102bb22e62f7310c28fac294b7405e8f087fe6"
+  integrity sha512-ntQ7Z/rQSmWy4GoDoyYroBGdwywTZQB2MEYUaM8DkYA/fD6WVcBt2W8KKEmrr7CLX79s19PjIvITiuvSpamhrg==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngxs/devtools-plugin@^3.4.3":
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/@ngxs/devtools-plugin/-/devtools-plugin-3.4.3.tgz#437e8599d24babee2c08cdd93a789585248a1a5c"
