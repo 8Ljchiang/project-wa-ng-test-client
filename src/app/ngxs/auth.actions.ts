@@ -12,3 +12,8 @@ export class SetAuthToken {
   static readonly type = '[auth] SET_AUTH_TOKEN';
   constructor(public payload: { authToken: string }) {}
 }
+
+export class Signup {
+  static readonly type = '[auth] SIGNUP';
+  constructor(public payload: { username: string, email: string, password: string }) {}
+}

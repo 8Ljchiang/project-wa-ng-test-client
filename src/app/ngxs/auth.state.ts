@@ -1,6 +1,6 @@
 import { defaultUserAccount } from './../config/seedData';
 import { State, Action, StateContext } from '@ngxs/store';
-import { Login, Logout, SetAuthToken } from './auth.actions';
+import { Login, Logout, SetAuthToken, Signup } from './auth.actions';
 import { fakeAuthToken } from '../config/seedData';
 import { SetAccount } from './account.actions';
 import { Navigate } from './router.state';
@@ -51,4 +51,10 @@ export class AuthState {
       authToken
     });
   }
+
+  @Action(Signup)
+  signup({ patchState, dispatch }: StateContext<AuthStateModel>, { payload }: Signup) {
+    dispatch(new Navigate('/index/login'));
+  }
+
 }

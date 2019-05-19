@@ -1,10 +1,33 @@
 <p>
   login works!
 </p>
-<fieldset>
+<!-- <fieldset>
     <label for="lusername">Username</label>
     <input id="lusername" name="username" type="text" placeholder="username" [(ngModel)]="username" />
     <label for="lpassword">Password</label>
     <input id="lpassword" name="password" type="password" placeholder="username" [(ngModel)]="password" />
     <input (click)="onLoginAction()" type="submit" value="submit" />
-</fieldset>
+</fieldset> -->
+<form [formGroup]="loginForm">
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matNativeControl formControlName="username">
+    <mat-hint>
+      Required
+    </mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matNativeControl type="password" formControlName="password">
+    <mat-hint>
+      Required
+    </mat-hint>
+  </mat-form-field>
+</form>
+
+<button mat-raised-button
+  color="primary"
+  [disabled]="loginForm.invalid"
+  (click)="onLoginAction()">
+  Submit
+</button>

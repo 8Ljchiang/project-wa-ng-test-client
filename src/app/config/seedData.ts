@@ -1,3 +1,18 @@
+export const userAccountRoles = [
+  {
+    name: 'Admin',
+    value: 'ADMIN'
+  },
+  {
+    name: 'Manager',
+    value: 'MANAGER',
+  },
+  {
+    name: 'Basic',
+    value: 'BASIC',
+  }
+];
+
 export const defaultUserAccount = {
   roles: ['ADMIN', 'MANAGER'],
   status: 'ACTIVE',

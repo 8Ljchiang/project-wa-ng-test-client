@@ -1,3 +1,43 @@
 <p>
   signup works!
 </p>
+<form [formGroup]="signupFormGroup">
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matNativeControl placeholder="username" formControlName="username">
+    <mat-hint>
+      Required
+    </mat-hint>
+    <mat-error *ngIf="username.invalid && username.touched">
+      Invalid username
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matNativeControl placeholder="email" formControlName="email">
+      <mat-hint>
+        Required
+      </mat-hint>
+      <mat-error *ngIf="email.invalid && email.touched">
+        Invalid email
+      </mat-error>
+    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matNativeControl type="password" placeholder="password" formControlName="password">
+    <!-- <mat-hint align="end"> -->
+    <mat-hint>
+      Must have one letter and one number
+    </mat-hint>
+    <mat-error *ngIf="password.invalid && password.touched">
+      Invalid password
+    </mat-error>
+  </mat-form-field>
+</form>
+
+<button mat-raised-button
+  color="primary"
+  [disabled]="signupFormGroup.invalid"
+  (click)="onSignupAction()">
+  Submit
+</button>
