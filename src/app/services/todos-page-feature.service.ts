@@ -1,4 +1,4 @@
-import { GetTasks, CreateNewTask } from './../ngxs/task.actions';
+import { GetTasks, CreateNewTask, DeleteTask } from './../ngxs/task.actions';
 import { Observable } from 'rxjs';
 import { Todo } from './../models/Todo';
 import { Injectable } from '@angular/core';
@@ -25,5 +25,10 @@ export class TodosPageFeatureService {
   @Dispatch()
   public createNewTodo(newTask: Partial<Todo>) {
     return new CreateNewTask({ task: newTask });
+  }
+
+  @Dispatch()
+  public deleteTodo(todo: Todo) {
+    return new DeleteTask({ taskId: todo.id });
   }
 }

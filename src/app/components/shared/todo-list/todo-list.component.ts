@@ -44,7 +44,9 @@ export class TodoListComponent implements OnInit {
   }
 
   deleteTodo(todo: Todo) {
-
+    if (todo && typeof(todo.id) === 'number') {
+      this.todoService.deleteTodo(todo);
+    }
   }
   // addTodo(todoWithoutId: { title: string, completed: boolean}) {
   //   if (todoWithoutId && todoWithoutId.title) {

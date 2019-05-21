@@ -12,8 +12,8 @@ import { TodoAdapter } from '../adapters/TodoAdapter';
 export class TodoV2Service extends ResourceService<Todo> {
   constructor(
     store: Store,
-    httpClient: HttpClient
+    httpClient: HttpClient,
   ) {
-    super(store, httpClient, api.root, 'tasks', new TodoAdapter());
+    super(store, httpClient, api.root, `${api.apiPrefix}/tasks`, new TodoAdapter());
   }
 }
